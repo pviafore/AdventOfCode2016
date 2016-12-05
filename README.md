@@ -7,3 +7,5 @@ If you are interested in doing this yourself, DO NOT LOOK AT SOLUTIONS ahead of 
 You can find the problems on adventofcode.com.  
 
 You can find explanations on my blog -> patviafore.com
+
+Day 1 -> Haskell
