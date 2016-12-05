@@ -2,7 +2,6 @@ def parse_inputs():
     with open("day2.txt") as in_file:
         return in_file.read().split("\n")
 
-
 def move_key(keypad, move):
     if move == "U":
         keypad["y"] = max(0, keypad["y"] - 1)
