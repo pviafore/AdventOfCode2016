@@ -8,4 +8,4 @@ You can find the problems on adventofcode.com.
 
 You can find explanations on my blog -> patviafore.com
 
-Day 1 -> Haskell
+Day 1 -> Haskell (https://patviafore.com/2016/12/05/advent-of-code-2016-day-1/)
