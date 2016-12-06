@@ -7,14 +7,13 @@
                             (remove #(= % "" ))
                             (map read-string)
                             (sort)
-                            (seq)
                             )
 )
 
 (defn make-triangles [strings] (map make-triangle strings))
 
-(defn is-valid-triangle [[a b c]] (> (+ a b) c))
-(defn get-valid-triangles [triangles] (filter is-valid-triangle triangles))
+(defn is-valid-triangle? [[a b c]] (> (+ a b) c))
+(defn get-valid-triangles [triangles] (filter is-valid-triangle? triangles))
 
 (defn main [] (->
                (read-file)
