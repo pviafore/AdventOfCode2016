@@ -40,8 +40,8 @@ sub shift($char, $id) {
 
 sub decrypt((Str $room, Str $id, Str $chksum)) {
     my @chars = split "", $room;
-    my $decoded-room = @chars.map({ shift $_, $id});
-    my $final-room = join "", $decoded-room;
+    my @decoded-room = @chars.map({ shift $_, $id});
+    my $final-room = join "", @decoded-room;
     return ($final-room, $id, $chksum)
 }
 
@@ -51,5 +51,5 @@ my @rooms = split("\n", $data);
 my @room-infos = @rooms.map({get-room-info $_ })
                        .grep({is-valid-room $_})
                        .map({decrypt $_})
-                       .grep({$_ ~~ m/"n o r t h"/});
+                       .grep({$_ ~~ m/"north"/});
 say @room-infos;
