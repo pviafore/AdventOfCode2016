@@ -27,7 +27,6 @@ sub is-valid-room((Str $room, Str $id, Str $chksum)) {
     return get-checksum($room) === $chksum;
 }
 
-
 my $data = slurp "/data/day4.txt";
 my @rooms = split("\n", $data);
 my @room-infos = @rooms.map({get-room-info $_ }).grep({is-valid-room $_});
