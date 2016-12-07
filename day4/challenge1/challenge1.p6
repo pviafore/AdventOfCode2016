@@ -19,7 +19,7 @@ sub get-checksum (Str $room) {
             %mapping{$char} = 1
         }
     }
-    my @sorted =  %mapping.keys.reverse.sort.sort: {%mapping{$^b} <=> %mapping{$^a} };
+    my @sorted =  %mapping.keys.sort.sort: {%mapping{$^b} <=> %mapping{$^a} };
     return join "", @sorted[0..4];
 }
 
