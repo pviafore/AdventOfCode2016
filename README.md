@@ -19,3 +19,5 @@ Day 4 -> Perl 6 (https://patviafore.com/2016/12/07/advent-of-code-2016-day-4-per
 Day 5 -> Java 8 (https://patviafore.com/2016/12/08/advent-of-code-2016-day-5-java-8/)
 
 Day 6 -> Julia (https://patviafore.com/2016/12/08/advent-of-code-day-6-julia/)
+
+DAy 7 -> Javascript (https://patviafore.com/2016/12/10/advent-of-code-2016-day-7-javascript/)
