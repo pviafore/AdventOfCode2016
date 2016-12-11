@@ -20,4 +20,6 @@ Day 5 -> Java 8 (https://patviafore.com/2016/12/08/advent-of-code-2016-day-5-jav
 
 Day 6 -> Julia (https://patviafore.com/2016/12/08/advent-of-code-day-6-julia/)
 
-DAy 7 -> Javascript (https://patviafore.com/2016/12/10/advent-of-code-2016-day-7-javascript/)
+Day 7 -> Javascript (https://patviafore.com/2016/12/10/advent-of-code-2016-day-7-javascript/)
+
+Day 8 -> C++ (https://patviafore.com/2016/12/11/advent-of-code-2016-day-8-c/)
