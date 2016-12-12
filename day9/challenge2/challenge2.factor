@@ -75,7 +75,7 @@ DEFER: decompress
                                     tri subseq  
                                   ] 
                                  tri  ;
-: decompress ( str -- str ) dup get-match dup f eq? [ drop length ] [ nip split-on-match decompress dup fixnum? [  ] [ length ] if + + nip ] if ;
+: decompress ( str -- len ) dup get-match dup f eq? [ drop length ] [ nip split-on-match decompress dup fixnum? [  ] [ length ] if + + nip ] if ;
 : read-file ( file-path encoding -- file-contents ) file-contents ;
 
 "../day9.txt" utf8 read-file decompress .
