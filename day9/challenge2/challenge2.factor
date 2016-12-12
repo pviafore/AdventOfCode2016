@@ -19,7 +19,7 @@ IN: challenge1
 : extract-first-number ( str -- x ) dup R/ \d+x/ first-match [ from>> ] [ to>> 1 - ] bi pick subseq nip string>number ;
 : extract-second-number ( str -- x ) dup R/ x\d+/ first-match [ from>> 1 + ] [ to>> ] bi pick subseq nip string>number ;
 : extract-numbers ( str -- sel rep ) [ extract-first-number ] [ extract-second-number ] bi ;
-: extract-first-from-match ( match -- str )  ;
+
 DEFER: decompress
 : split-on-match ( match -- a b c match ) 
                                   [ ! before the match - a
