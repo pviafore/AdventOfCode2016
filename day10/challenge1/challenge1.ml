@@ -37,11 +37,9 @@ match StringMap.find bots number with
         let l,h = if v < value then v,value else value,v in
         let sent = (send_to high h high_type (send_to low l low_type bots)) in 
         StringMap.add ~key:number ~data:{value=0; overflow=overflow; responsible=(l,h)=(17,61)} sent
-      
   | None -> bots
 
 and send_to dest num t bots =
-   print_endline (t^" "^dest^" was sent "^(string_of_int num));
    if String.equal t "output" then
     bots
    else
@@ -63,9 +61,7 @@ let compare_instruction_cast inst =
 let compare_instruction in1 in2 = 
     compare (compare_instruction_cast in1) (compare_instruction_cast in2)
 
-let to_bot_string bot = "BOT"
-
-let to_data_string {value; overflow; responsible;} = string_of_int(value)^" "^(if responsible then "Yes" else "No")
+let is_responsible {value; overflow; responsible;} = responsible
 
 let () =
    let file_to_read = "../day10.txt" in 
@@ -73,4 +69,5 @@ let () =
     let commands = List.map ~f: make_command lines in
     let sorted_commands = List.stable_sort compare_instruction commands in
     let bots = List.fold_left ~f: process_command  ~init: StringMap.empty sorted_commands in
-    StringMap.iter ~f:(fun ~key:k ~data:v -> print_endline (k^" "^to_data_string(v))) bots
+    let filtered_bots = StringMap.filter ~f:(fun ~key:k ~data:v -> is_responsible v) bots in
+    StringMap.iter ~f:(fun ~key:k ~data:v -> print_endline ("The correct bot is "^k)) filtered_bots
