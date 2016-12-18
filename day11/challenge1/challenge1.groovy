@@ -130,7 +130,32 @@ class Building implements Cloneable
         def blding = new Building()
         blding.floors = this.floors.collect { it.clone() }
         blding.elevator = this.elevator
+        blding.lastBuilding = this
         return blding
+    }
+
+    def equals(Building bldg) {
+        return this.getPairs() == bldg.getPairs()
+    }
+
+    def getPairs()
+    {
+        def pairs = [:]
+        (0..3).each {
+            this.floors[it].microchips.every {mc ->
+                 if (pairs[mc.charAt(0)] == null) {
+                     pairs[mc.charAt(0)] = [-1, -1]
+                 } 
+                  pairs[mc.charAt(0)][0] = it
+            }
+            this.floors[it].generators.every {gen ->
+                 if (pairs[gen.charAt(0)] == null) {
+                     pairs[gen.charAt(0)] = [-1, -1]
+                 } 
+                  pairs[gen.charAt(0)][1] = it
+            }
+        }
+        pairs.values().sort()
     }
 
     def print(){
@@ -160,13 +185,13 @@ class Building implements Cloneable
         return this.floors[0].isEmpty() && this.floors[1].isEmpty() && this.floors[2].isEmpty()
     }
 
-    def isGood() {
-        return this.floors.every { it.isSafe() }
+    def isGood(lastFloor) {
+        return this.floors[this.elevator].isSafe() && this.floors[lastFloor].isSafe()
     }
 
     def areFloorsBelowEmpty()
     {
-        [0..(this.elevator-1)].every { this.floors[it].isEmpty()}
+        (0..(this.elevator-1)).every { this.floors[it].isEmpty()}
     }
 }
 
@@ -174,24 +199,25 @@ class Building implements Cloneable
 def find_solution(building)
 {
     def buildings = [building]
-    def foundSolution = false
     def time
-    for(time = 0;!foundSolution; ++time)
+    def seenBuildings = [0:[building], 1:[], 2:[], 3:[]]
+    for(time = 0; buildings.size()!=0 && !buildings.any { it.isFinished() }; ++time)
     {
-        def newBuildings = get_next_options(buildings)
+        def newBuildings = []
+        buildings.each { 
+             bldg ->
+                getBuildingCandidates(bldg).each 
+                    { candidate ->
+                    if(seenBuildings[candidate.elevator].every { !it.equals(candidate) } )
+                        newBuildings << candidate
+                        
+                        seenBuildings[candidate.elevator] << candidate
+                }
+         }   
         buildings = newBuildings
         println buildings.size()
-        foundSolution = buildings.any { it.isFinished() }
     }
     time
-}
-
-def get_next_options(buildings) {
-    options = []
-    buildings.each { 
-        bldg -> options.addAll(getBuildingCandidates(bldg)) 
-    }
-    options
 }
 
 def getBuildingCandidates(bldg)
@@ -200,21 +226,25 @@ def getBuildingCandidates(bldg)
     def options = bldg.get_possible_things_to_remove()
     if (bldg.elevator < 3)
     {
-        candidates.addAll(getCandidatesOnNewFloor(bldg, bldg.elevator+1, options))
+        two_candidates = getCandidatesOnNewFloor(bldg, bldg.elevator+1, options.grep { it.size() == 2 })
+        if (two_candidates.size() == 0){
+            candidates.addAll(getCandidatesOnNewFloor(bldg, bldg.elevator+1, options.grep { it.size() == 1 }))
+        }
+        candidates.addAll(two_candidates)
     }
     if (bldg.elevator > 0 && !bldg.areFloorsBelowEmpty())
     {
-        candidates.addAll(getCandidatesOnNewFloor(bldg, bldg.elevator-1, options))
+        candidates.addAll(getCandidatesOnNewFloor(bldg, bldg.elevator-1, options.grep{it.size() == 1}))
     }
     candidates
 }
-
 def getCandidatesOnNewFloor(bldg, newFloor, options)
 {
     def candidates = []
+
     options.each { option ->
         candidate = apply_move(newFloor, option, bldg)
-        if((candidate.lastBuilding != bldg) && candidate.isGood()) {
+        if(candidate.isGood(bldg.elevator)) {
             candidates << candidate                            
         }
     }
@@ -233,18 +263,5 @@ def apply_move(floor, option, building)
 def fileContents = new File("../day11.txt").text.split("\n")
 def building = new Building(fileContents)
 
-b1 = get_next_options([building])[0]
-b2 = get_next_options([b1])[1]
-b3 = get_next_options(b2)[0]
-b4 = get_next_options(b3)[0]
-b5 = get_next_options(b4)[1]
-b6 = get_next_options(b5)[4]
-b7 = get_next_options(b6)[7]
-b8 = get_next_options(b7)[0]
-b9 = get_next_options(b8)[5]
-b10 = get_next_options(b9)[0]
-b11 = get_next_options(b10)[4]
-b11.print()
 
-
-//println find_solution(building)
+println find_solution(building)
