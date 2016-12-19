@@ -27,3 +27,5 @@ Day 8 -> C++ (https://patviafore.com/2016/12/11/advent-of-code-2016-day-8-c/)
 Day 9 -> Factor (https://patviafore.com/2016/12/12/advent-of-code-2016-day-9-factor/)
 
 Day 10 -> OcaML (https://patviafore.com/2016/12/14/advent-of-code-2016-day-10-ocaml/)
+
+Day 11 -> Groovy (https://patviafore.com/2016/12/19/advent-of-code-2016-day-11-groovy/)
