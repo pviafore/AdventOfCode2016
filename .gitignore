@@ -12,3 +12,4 @@ day10/challenge1/challenge1
 day10/challenge2/challenge2
 day10/challenge1/_build
 day10/challenge2/_build
+*.exe
