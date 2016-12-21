@@ -15,7 +15,6 @@ function* filter(iterable:IterableIterator<number>, f:(number)=>boolean){
             yield item
         }
     }
-    
 }
 
 function toDisc(str:string): Disc {
@@ -35,8 +34,7 @@ function getAllowedPositions(iterable:IterableIterator<number>, disc:Disc, discN
 
 declare function require(name:string);
 const fs = require("fs");
-const lines = fs.readFileSync("../day15.txt", "utf8").split("\n");
+const lines = fs.readFileSync("day15.txt", "utf8").split("\n");
 const discs = lines.filter(s => s !== "").map(toDisc);
 const allowedNumbers = discs.reduce(getAllowedPositions, infiniteSequence());
-//console.log(isTimeAllowed(6, {initialPosition:4, totalPositions:5}));
 console.log(allowedNumbers.next().value);

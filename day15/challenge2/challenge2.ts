@@ -15,9 +15,7 @@ function* filter(iterable:IterableIterator<number>, f:(number)=>boolean){
             yield item
         }
     }
-    
 }
-//console.log(isTimeAllowed(6, {initialPosition:4, totalPositions:5}));
 
 function toDisc(str:string): Disc {
     const regex:RegExp = /Disc #\d has (\d+) positions; at time=0, it is at position (\d+)./
