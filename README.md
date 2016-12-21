@@ -33,3 +33,5 @@ Day 11 -> Groovy (https://patviafore.com/2016/12/19/advent-of-code-2016-day-11-g
 Day 12 -> C# (https://patviafore.com/2016/12/19/advent-of-code-day-12-c/)
 
 Day 13 -> Lua (https://patviafore.com/2016/12/20/advent-of-code-day-13-lua/)
+
+Day 14 -> Go (https://patviafore.com/2016/12/21/advent-of-code-2016-day-14-go/)

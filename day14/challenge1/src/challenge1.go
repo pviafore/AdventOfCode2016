@@ -9,7 +9,7 @@ import "strconv"
 
 type Hash struct { 
     hash string
-    triplets string
+    triplet string
     quintuplets []string
 }
 
@@ -17,8 +17,6 @@ var md5s map[int]Hash = make(map[int]Hash)
 var salt = "zpqevtbw"
 var re3 = regexp.MustCompile(`(aaa|bbb|ccc|ddd|eee|fff|000|111|222|333|444|555|666|777|888|999)`)
 var re5 = regexp.MustCompile(`(aaaaa|bbbbb|ccccc|ddddd|eeeee|fffff|00000|11111|22222|33333|44444|55555|66666|77777|88888|99999)`)
-   
- 
 
 func getHash(x int) Hash {
     if val, ok := md5s[x]; ok{
@@ -63,7 +61,7 @@ func main() {
     counter := 1
     for numberOfPads := 0; numberOfPads < 64;  {
         hash := getHash(counter)
-        if hasQuintuplet(counter, hash.triplets) {
+        if hasQuintuplet(counter, hash.triplet) {
             numberOfPads += 1
         }
        
