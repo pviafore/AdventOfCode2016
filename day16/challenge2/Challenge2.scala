@@ -1,4 +1,4 @@
-object Challenge1 {
+object Challenge2 {
 
   val input = "01000100010010111"
   val diskSize = 35651584
