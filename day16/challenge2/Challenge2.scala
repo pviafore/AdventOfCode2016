@@ -3,12 +3,7 @@ object Challenge2 {
   val input = "01000100010010111"
   val diskSize = 35651584
   def invertByte(c: Char): Char = {
-      if (c == '0'){
-         '1'
-      }
-      else {
-          '0'
-      }
+      if (c == '0')  '1' else '0' 
   }
 
   def invert(s: String): String = {
@@ -28,10 +23,6 @@ object Challenge2 {
       }
   }
 
-  def reduce(s: String): String = {
-      s.slice(1,4)
-  }
-
   def condenseBytes(c1: Char, c2: Char): Char = {
       if (c1 == c2) '1' else '0'
   }
@@ -45,9 +36,6 @@ object Challenge2 {
           getChecksum(next)
       }
   }
-
-
-
 
   def main(args: Array[String]): Unit = {
     val s:String = getDragon(input, diskSize)
