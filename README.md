@@ -43,3 +43,5 @@ Day 16 -> Scala (https://patviafore.com/2016/12/22/advent-of-code-2016-day-16-sc
 Day 17 -> Ruby (https://patviafore.com/2016/12/22/advent-of-code-2016-day-17-ruby/)
 
 Day 18 -> Bash (https://patviafore.com/2016/12/26/advent-of-code-2016-day-18-bash/)
+
+Day 19 -> Swift (https://patviafore.com/2016/12/26/advent-of-code-2016-day-19/)
