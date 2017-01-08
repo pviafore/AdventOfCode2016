@@ -47,3 +47,5 @@ Day 18 -> Bash (https://patviafore.com/2016/12/26/advent-of-code-2016-day-18-bas
 Day 19 -> Swift (https://patviafore.com/2016/12/26/advent-of-code-2016-day-19/)
 
 Day 20 -> F# (https://patviafore.com/2017/01/06/advent-of-code-2016-day-20-f/)
+
+Day 21 -> PHP (https://patviafore.com/2017/01/08/advent-of-code-2016-day-21-php/)
