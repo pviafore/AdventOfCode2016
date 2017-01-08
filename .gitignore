@@ -20,4 +20,6 @@ day15/challenge2/challenge2.js
 day16/challenge1/Challenge1
 day16/challenge2/Challenge2
 *.swp
-
+*.html
+*.json
+elm-stuff
